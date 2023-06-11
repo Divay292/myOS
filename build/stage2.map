@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Jun  6 2023 02:33:19 (32-bit)
 Copyright (c) 2002-2023 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/06/11 16:37:47
+Created on:       23/06/11 18:23:27
 Executable Image: /home/divay/Desktop/myOS/build/stage2.bin
 creating a RAW Binary Image executable
 
@@ -13,7 +13,7 @@ creating a RAW Binary Image executable
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          0000009e             00000010
+DGROUP                          00000660             0000008e
 
 
 
@@ -25,10 +25,10 @@ Segment                Class          Group          Address         Size
 =======                =====          =====          =======         ====
 
 _ENTRY                 CODE           AUTO           00000000        00000013
-_TEXT                  CODE           AUTO           00000013        0000008b
-CONST                  DATA           DGROUP         0000009e        00000010
-CONST2                 DATA           DGROUP         000000ae        00000000
-_DATA                  DATA           DGROUP         000000ae        00000000
+_TEXT                  CODE           AUTO           00000013        0000064d
+CONST                  DATA           DGROUP         00000660        0000007b
+CONST2                 DATA           DGROUP         000006dc        00000011
+_DATA                  DATA           DGROUP         000006ee        00000000
 
 
                         +----------------+
@@ -44,12 +44,17 @@ Address        Symbol
 Module: /home/divay/Desktop/myOS/build/stage2/asm/main.obj(main.asm)
 00000000       entry
 Module: /home/divay/Desktop/myOS/build/stage2/asm/x86.obj(x86.asm)
-00000013       _x86_Video_WriteCharTeletype
+00000013       _x86_div64_32
+00000041       _x86_Video_WriteCharTeletype
 Module: /home/divay/Desktop/myOS/build/stage2/c/main.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/main.c)
-00000026       _cstart_
+00000054       _cstart_
 Module: /home/divay/Desktop/myOS/build/stage2/c/stdio.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/stdio.c)
-00000040+      putc_
-00000067       puts_
+000000ce+      putc_
+000000f5       puts_
+0000012c+      puts_f_
+00000169       _printf
+000003ec+      printf_number_
+000006dc+      _g_HexChars
 Warning! W1014: stack segment not found
 
 
@@ -58,6 +63,6 @@ Warning! W1014: stack segment not found
                         +-----------------------+
 
 Stack size:  0200 (512.)
-Memory size:  00ae (174.)
+Memory size:  06ee (1774.)
 Entry point address: 00000000
 Link time: 00:00.00
