@@ -1,5 +1,5 @@
 # myOS operating system
-myOS is a x86 based operating system made entirely in nasm assembly and C. This OS implements the FAT file system.
+myOS is a fully functional custom built x86 based operating system made entirely in nasm assembly and C. This OS implements the FAT file system.
 
 
 ## Requirements
