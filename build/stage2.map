@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Jun  6 2023 02:33:19 (32-bit)
 Copyright (c) 2002-2023 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/06/11 18:23:27
+Created on:       23/06/11 23:24:16
 Executable Image: /home/divay/Desktop/myOS/build/stage2.bin
 creating a RAW Binary Image executable
 
@@ -13,7 +13,7 @@ creating a RAW Binary Image executable
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          00000660             0000008e
+DGROUP                          00001a04             00000164
 
 
 
@@ -25,10 +25,11 @@ Segment                Class          Group          Address         Size
 =======                =====          =====          =======         ====
 
 _ENTRY                 CODE           AUTO           00000000        00000013
-_TEXT                  CODE           AUTO           00000013        0000064d
-CONST                  DATA           DGROUP         00000660        0000007b
-CONST2                 DATA           DGROUP         000006dc        00000011
-_DATA                  DATA           DGROUP         000006ee        00000000
+_TEXT                  CODE           AUTO           00000013        000019f1
+CONST                  DATA           DGROUP         00001a04        00000142
+CONST2                 DATA           DGROUP         00001b46        00000011
+_DATA                  DATA           DGROUP         00001b58        00000008
+_BSS                   BSS            DGROUP         00001b60        00000008
 
 
                         +----------------+
@@ -44,17 +45,52 @@ Address        Symbol
 Module: /home/divay/Desktop/myOS/build/stage2/asm/main.obj(main.asm)
 00000000       entry
 Module: /home/divay/Desktop/myOS/build/stage2/asm/x86.obj(x86.asm)
-00000013       _x86_div64_32
-00000041       _x86_Video_WriteCharTeletype
+00000013       __U4D
+0000003a       __U4M
+00000054       _x86_div64_32
+00000082       _x86_Video_WriteCharTeletype
+00000095       _x86_Disk_Reset
+000000aa       _x86_Disk_Read
+000000e1       _x86_Disk_GetDriveParams
+Module: /home/divay/Desktop/myOS/build/stage2/c/ctype.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/ctype.c)
+00000125+      islower_
+00000163       toupper_
+Module: /home/divay/Desktop/myOS/build/stage2/c/disk.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/disk.c)
+000001ab       DISK_Initialize_
+00000221+      DISK_LBA2CHS_
+000002d4       DISK_ReadSectors_
+Module: /home/divay/Desktop/myOS/build/stage2/c/fat.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/fat.c)
+00000371+      FAT_ReadBootSector_
+000003a5+      FAT_ReadFat_
+000003e9       FAT_Initialize_
+00000634+      FAT_ClusterToLba_
+0000068a+      FAT_OpenEntry_
+00000854+      FAT_NextCluster_
+000008dd       FAT_Read_
+00000c41       FAT_ReadEntry_
+00000c9a       FAT_Close_
+00000d18+      FAT_FindFile_
+00000e52       FAT_Open_
 Module: /home/divay/Desktop/myOS/build/stage2/c/main.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/main.c)
-00000054       _cstart_
+00000fcc       _cstart_
+00001b5c+      _g_data
+Module: /home/divay/Desktop/myOS/build/stage2/c/memory.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/memory.c)
+0000117b       memcpy_
+000011f3       memset_
+00001252       memcmp_
 Module: /home/divay/Desktop/myOS/build/stage2/c/stdio.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/stdio.c)
-000000ce+      putc_
-000000f5       puts_
-0000012c+      puts_f_
-00000169       _printf
-000003ec+      printf_number_
-000006dc+      _g_HexChars
+000012cf       putc_
+000012f6+      puts_
+0000132d+      puts_f_
+0000136a       _printf
+000015ed+      printf_number_
+00001b46+      _g_HexChars
+Module: /home/divay/Desktop/myOS/build/stage2/c/string.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/string.c)
+00001861       strchr_
+000018bc+      strcpy_
+00001930       strlen_
+Module: /home/divay/Desktop/myOS/build/stage2/c/utility.obj(/home/divay/Desktop/myOS/src/bootloader/stage2/utility.c)
+0000196b+      align_
 Warning! W1014: stack segment not found
 
 
@@ -63,6 +99,6 @@ Warning! W1014: stack segment not found
                         +-----------------------+
 
 Stack size:  0200 (512.)
-Memory size:  06ee (1774.)
+Memory size:  1b68 (7016.)
 Entry point address: 00000000
 Link time: 00:00.00

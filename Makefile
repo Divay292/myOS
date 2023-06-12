@@ -1,5 +1,5 @@
 ASM=nasm
-CC=gec
+CC=gcc
 CC16=/usr/bin/watcom/binl/wcc
 LD16=/usr/bin/watcom/binl/wlink
 
@@ -22,7 +22,9 @@ $(BUILD_DIR)/main_floppy.img: bootloader kernel
 	dd if=$(BUILD_DIR)/stage1.bin of=$(BUILD_DIR)/main_floppy.img conv=notrunc
 	mcopy -i $(BUILD_DIR)/main_floppy.img $(BUILD_DIR)/stage2.bin "::stage2.bin"
 	mcopy -i $(BUILD_DIR)/main_floppy.img $(BUILD_DIR)/kernel.bin "::kernel.bin"
-	mcopy -i $(BUILD_DIR)/main_floppy.img test.txt "::test.txt"
+		mcopy -i $(BUILD_DIR)/main_floppy.img test.txt "::test.txt"
+	mmd -i $(BUILD_DIR)/main_floppy.img "::mydir"
+	mcopy -i $(BUILD_DIR)/main_floppy.img test.txt "::mydir/test.txt"
 
 
 #
